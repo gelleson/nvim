@@ -26,7 +26,10 @@ if ! command -v nvim &>/dev/null; then
 else
   NVIM_VER=$(nvim --version | head -1 | grep -oP '\d+\.\d+')
   if [ "$(echo "$NVIM_VER < 0.10" | bc)" -eq 1 ]; then
-    echo "Neovim $NVIM_VER found, but 0.10+ is required. Upgrading..."
+    echo "Neovim $NVIM_VER found, but 0.10+ is required. Reinstalling..."
+    if command -v apt-get &>/dev/null; then
+      sudo apt-get remove -y neovim neovim-runtime 2>/dev/null || true
+    fi
     install_nvim
   fi
 fi
