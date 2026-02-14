@@ -20,8 +20,9 @@ if ! command -v nvim &>/dev/null; then
 fi
 
 if [ -d "$NVIM_DIR" ]; then
-  echo "Backing up existing config to $NVIM_DIR.bak"
-  mv "$NVIM_DIR" "$NVIM_DIR.bak"
+  BACKUP="$NVIM_DIR.bak.$(date +%s)"
+  echo "Backing up existing config to $BACKUP"
+  mv "$NVIM_DIR" "$BACKUP"
 fi
 
 git clone https://github.com/gelleson/nvim.git "$NVIM_DIR"
