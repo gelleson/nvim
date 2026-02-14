@@ -1,0 +1,7 @@
+.claude/
+lazy-lock.json
+.luarc.json
+.neoconf.json
+.DS_Store
+*.bak
+*~
