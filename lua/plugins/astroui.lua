@@ -9,10 +9,22 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "astrodark",
+    colorscheme = "wildcharm",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = {
+        -- mini.icons color groups: some colorschemes (e.g. wildcharm) do not define
+        -- these, which makes mini.icons throw "Invalid highlight name: MiniIconsGrey"
+        -- on startup. Link them to built-in groups so they always exist.
+        MiniIconsAzure = { link = "Function" },
+        MiniIconsBlue = { link = "Special" },
+        MiniIconsCyan = { link = "Constant" },
+        MiniIconsGreen = { link = "String" },
+        MiniIconsGrey = { link = "Comment" },
+        MiniIconsOrange = { link = "Number" },
+        MiniIconsPurple = { link = "Statement" },
+        MiniIconsRed = { link = "Error" },
+        MiniIconsYellow = { link = "Type" },
         -- Cursor = { fg = "#000000", bg = "#ffff00" },
         -- CursorLine = { bg = "#1c3a5e" },
         -- CursorColumn = { bg = "#1c3a5e" },
