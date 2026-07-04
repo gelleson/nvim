@@ -10,14 +10,10 @@ bash <(curl -s https://raw.githubusercontent.com/gelleson/nvim/main/install.sh)
 
 ### Install with GitHub CLI
 
-If you prefer using [`gh`](https://cli.github.com/) instead of `git clone`/`curl`:
+If you prefer using [`gh`](https://cli.github.com/) instead of `git clone`/`curl`, authenticated with a token (e.g. `GH_TOKEN`):
 
 ```bash
-# Backup any existing config first
-[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.bak.$(date +%s)
-
-# Clone via gh
-gh repo clone gelleson/nvim ~/.config/nvim
+GH_TOKEN=<your_token> sh -c '[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.bak.$(date +%s); gh repo clone gelleson/nvim ~/.config/nvim'
 ```
 
 Then run `nvim` — plugins install automatically on first launch.
