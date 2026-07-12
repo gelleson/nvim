@@ -44,9 +44,8 @@ return {
               -- completion and closing the UI). Falls back to a plain
               -- debug_test if we can't locate the function header.
               local dap = require "dap"
-              local ok_ts, ts = pcall(require, "nvim-treesitter.ts_utils")
+              local ok_ts, node = pcall(vim.treesitter.get_node)
               if ok_ts then
-                local node = ts.get_node_at_cursor()
                 while node and node:type() ~= "function_declaration" do
                   node = node:parent()
                 end
