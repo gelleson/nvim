@@ -1,3 +1,13 @@
+-- Lazy runs helptags on Markdown-only doc directories (e.g. package-info.nvim).
+local docs = require("lazy.manage.task.plugin").docs
+local generate_docs = docs.run
+docs.run = function(task)
+  local path = task.plugin.dir .. "/doc"
+  if vim.fn.globpath(path, "**/*.txt") ~= "" or vim.fn.globpath(path, "**/*.??x") ~= "" then
+    generate_docs(task)
+  end
+end
+
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
