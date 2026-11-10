@@ -9,6 +9,7 @@ return {
         local key = vim.fn.keytrans(vim.api.nvim_replace_termcodes(lhs, true, true, true))
         local prefix, suffix = key:match "^<Space>([tT])(.*)$"
         if prefix then key = "<Space>" .. (prefix == "t" and "T" or "t") .. suffix end
+        key = key:gsub("^<Space>tW", "<Space>tw")
         swapped[key] = mapping
       end
       opts.mappings[mode] = swapped
